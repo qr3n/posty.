@@ -20,7 +20,6 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { UploadVideo } from "./UploadVideo";
 import { EventContext } from "./Context";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shared/shadcn/ui/tooltip";
-import { useState } from "react";
 import { AddInformation } from "./AddInformation";
 import {AlmostDone} from "@features/event/create/AlmostDone";
 import {IIntegration} from "@entities/integration/model/types";
