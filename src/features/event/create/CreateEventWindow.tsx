@@ -2,7 +2,7 @@ import Image from "next/image";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
+  DialogDescription, DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger
@@ -36,7 +36,7 @@ export const CreateEventWindow = ({ disabled }: { disabled: boolean }) => {
           <TooltipContent>
             <p>Add to library</p>
           </TooltipContent>
-        </Tooltip></TooltipProvider> :  <Button size='sm' className='font-normal flex gap-1 bg-orange-500 hover:bg-orange-600'>Event <PlusIcon/> </Button>}
+        </Tooltip></TooltipProvider> :  <Button className='font-normal flex gap-1 bg-orange-500 hover:bg-orange-600'>Event <PlusIcon/> </Button>}
       </DialogTrigger>
       <DialogContent className='[&>*]:will-change-transform h-screen sm:h-[70vh] sm:max-w-[900px] overflow-y-auto'>
         <EventContext>

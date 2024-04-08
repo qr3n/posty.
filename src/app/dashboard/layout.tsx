@@ -21,13 +21,18 @@ import { IIntegration } from "@entities/integration/model/types";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@shared/shadcn/ui/dialog";
 import { AddTwitter, AddYoutube } from "@features/integration/add/ui";
+import { AddInstagram } from "@features/integration/add/ui/AddInstagram";
+import { redirect } from "next/navigation";
 
 function AvatarFallback(props: { children: ReactNode }) {
   return null;
 }
 
 export default async function DashboardLayout(props: PropsWithChildren) {
-  const session = await getSession();
+  const session = await getSession()
+
+  if (!session) return redirect('/')
+
   const integrations = await api.get<IIntegration[]>('http://localhost:8000/integrations')
 
   return (
@@ -41,11 +46,12 @@ export default async function DashboardLayout(props: PropsWithChildren) {
               <DialogTrigger asChild>
                 <Button className='bg-yellow-400 flex gap-1 hover:bg-yellow-500'>Integration <PlusIcon/></Button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className='max-w-[700px] h-screen sm:h-max'>
                 <DialogTitle className='text-center'>Add integration</DialogTitle>
-                <div className='flex gap-1'>
-                  <AddYoutube/>
-                  <AddTwitter/>
+                <div className='sm:mt-6 h-max flex gap-4 justify-center flex-col sm:flex-row'>
+                  { !integrations.some(i => i.integration_type === 'youtube') && <AddYoutube/> }
+                  { !integrations.some(i => i.integration_type === 'twitter') && <AddTwitter/> }
+                  { !integrations.some(i => i.integration_type === 'instagram') && <AddInstagram/> }
                 </div>
               </DialogContent>
             </Dialog>
@@ -68,11 +74,11 @@ export default async function DashboardLayout(props: PropsWithChildren) {
                   </div>
                 </div>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem>Scheduler</DropdownMenuItem>
-                <DropdownMenuItem>Integrations</DropdownMenuItem>
-                <DropdownMenuItem>Assistant</DropdownMenuItem>
+                <Link href='/dashboard/scheduler'><DropdownMenuItem>Scheduler</DropdownMenuItem></Link>
+                <Link href='/dashboard/integrations'><DropdownMenuItem>Integrations</DropdownMenuItem></Link>
+                <Link href='/dashboard/assistant'><DropdownMenuItem>Assistant</DropdownMenuItem></Link>
                 <DropdownMenuSeparator/>
-                <DropdownMenuItem>Log out</DropdownMenuItem>
+                <Link href=''><DropdownMenuItem>Log out</DropdownMenuItem></Link>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

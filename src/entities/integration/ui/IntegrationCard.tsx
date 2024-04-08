@@ -32,19 +32,19 @@ const images: Record<TAllowedIntegrations, StaticImageData> = {
 
 export const IntegrationCard = (props: IProps) => {
   return (
-    <div className="p-4 bg-[#222] flex justify-between rounded-xl cursor-pointerZ">
+    <div className="p-4 bg-[#222] w-full flex justify-between rounded-xl cursor-pointerZ">
       <div>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 w-full'>
           <Image src={images[props.integration_type]} width={18} height={18} alt=''/>
           <h1 className='font-medium'>{integrations[props.integration_type]}</h1>
         </div>
         <p className='text-sm mt-0.5'>{props.channel_name}</p>
-        <p className='text-[#aaa] text-xs flex gap-1 mt-0.5'>Added 35 hours ago</p>
+        <p className='text-[#aaa] text-xs flex gap-1 mt-0.5'>Added 1 minute ago</p>
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button size='icon' className='bg-[#333] hover:bg-[#444]'>
-            <FiMoreHorizontal/>
+            <FiMoreHorizontal className='text-white'/>
           </Button>
         </DropdownMenuTrigger>
 

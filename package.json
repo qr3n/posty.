@@ -20,6 +20,7 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "@rajesh896/video-thumbnails-generator": "^2.3.9",
     "axios": "^1.6.7",
+    "chatgpt": "^5.2.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "embla-carousel-react": "^8.0.0",

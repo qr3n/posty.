@@ -8,11 +8,17 @@ import twitter from './twitter.png'
 import Image from "next/image";
 
 export const AddTwitter = () => {
-  const session = useUser()
+  const user = useUser()
 
   return (
-    <div className='flex gap-1 items-center py-2 px-4 hover:bg-[#242424] rounded-md cursor-pointer' onClick={() => integrationModel.actions.addIntegration("twitter", session!.user!.sub!)}>
-      <Image src={twitter} alt={'twitter_icon'} width={18} height={18} className='rounded-[4px]'/> Twitter
+    <div className='bg-[#161616] w-full sm:w-1/3 transition-all h-full flex gap-1 flex-col items-center px-6 py-12 rounded-xl cursor-pointer hover:bg-[#222]'
+         onClick={user ? () => integrationModel.actions.addIntegration('twitter', user.user!.sub!) : () => null}
+    >
+      <div className='flex gap-0.5 flex-col text-center items-center'>
+        <Image src={twitter} alt={'youyube'} className='w-max h-max' width={18}/>
+        <h1 className='font-semibold text-xl mt-1'>Twitter</h1>
+        <p className='text-[#aaa] text-sm'>Previews and links</p>
+      </div>
     </div>
   );
 };

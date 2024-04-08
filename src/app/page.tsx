@@ -1,12 +1,17 @@
 import { Button } from "@shared/shadcn/ui/button";
-import test from './test.jpg'
+import test from './bg.webp'
 import Image from "next/image";
 import Link from "next/link";
-import { GrAction } from "react-icons/gr";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { ScrollArea } from "@shared/shadcn/ui/scroll-area";
+import { getSession } from "@auth0/nextjs-auth0";
+import { redirect } from "next/navigation";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await getSession()
+
+  if (session) return redirect('/dashboard/scheduler')
+
   return (
     <ScrollArea>
       <div className='w-screen h-screen bg-black'>
@@ -37,7 +42,7 @@ export default function HomePage() {
           </div>
           <h1 className='z-50 text-white text-5xl font-semibold mt-2'>Get creative, not routine</h1>
           <Link href='/api/auth/login' className='z-50 mt-4'><Button
-            className='w-max bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2' size='lg'>
+            className='w-max text-white bg-blue-600 hover:bg-blue-700 flex items-center justify-center gap-2' size='lg'>
             Get early access
             <FaArrowRightLong/>
           </Button></Link>

@@ -34,7 +34,7 @@ export default async function IntegrationsPage() {
       }
 
       {integrations.length !== 0 && (
-        <div className='flex gap-2 flex-col p-6'>
+        <div className='flex gap-2 flex-col p-6 w-full'>
           {integrations.map(i => <IntegrationCard key={i.id} {...i}/>)}
         </div>
       )}
