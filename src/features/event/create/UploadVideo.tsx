@@ -27,7 +27,8 @@ export const UploadVideo = () => {
         <Image src={upload} width={128} height={128} alt='1' className='group-hover:scale-[105%] transition-transform will-change-transform'/>
         <h1 className='font-medium mt-4'>Upload your video</h1>
         <p className='text-[#aaa] text-xs'>It will be saved on our servers</p>
-        <input type='file' className='hidden' ref={inputRef} onChange={handleChange}/>
+        <input type='file' className='hidden' accept="video/mp4,video/x-m4v,video/*"
+               ref={inputRef} onChange={handleChange}/>
       </div>
     </>
   )
