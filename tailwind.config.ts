@@ -10,6 +10,14 @@ const config = {
 	],
   prefix: "",
   theme: {
+    height: {
+      screen: 'calc(var(--vh) * 100)',
+    },
+
+    minHeight: {
+      screen: 'calc(var(--vh) * 100)',
+    },
+
     container: {
       center: true,
       padding: "2rem",
