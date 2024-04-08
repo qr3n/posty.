@@ -33,7 +33,7 @@ export default async function DashboardLayout(props: PropsWithChildren) {
 
   if (!session) return redirect('/')
 
-  const integrations = await api.get<IIntegration[]>('http://localhost:8000/integrations')
+  const integrations = await api.get<IIntegration[]>('https://c504-80-67-220-252.ngrok-free.app/integrations')
 
   return (
     <div className='flex flex-col-reverse sm:flex-row w-screen h-screen bg-black'>
@@ -41,7 +41,7 @@ export default async function DashboardLayout(props: PropsWithChildren) {
         <div className='border-[#333] z-50 border-b w-full items-center flex justify-between bg-[#121212] h-max py-4 px-5'>
           <DashboardTitle/>
           <div className='flex gap-3 items-center justify-center'>
-            <CreateEventWindow disabled={integrations.length === 0}/>
+            <CreateEventWindow disabled={integrations.length === 0} integrations={integrations}/>
             <Dialog>
               <DialogTrigger asChild>
                 <Button className='bg-yellow-400 flex gap-1 hover:bg-yellow-500'>Integration <PlusIcon/></Button>

@@ -22,8 +22,10 @@ import { EventContext } from "./Context";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@shared/shadcn/ui/tooltip";
 import { useState } from "react";
 import { AddInformation } from "./AddInformation";
+import {AlmostDone} from "@features/event/create/AlmostDone";
+import {IIntegration} from "@entities/integration/model/types";
 
-export const CreateEventWindow = ({ disabled }: { disabled: boolean }) => {
+export const CreateEventWindow = ({ disabled, integrations }: { disabled: boolean, integrations: IIntegration[] }) => {
 
   return (
     <Dialog>
@@ -53,7 +55,7 @@ export const CreateEventWindow = ({ disabled }: { disabled: boolean }) => {
 
             <CarouselItem>
               <div className="p-1 w-full h-full flex items-center justify-center">
-                3
+                <AlmostDone integrations={integrations}/>
               </div>
             </CarouselItem>
           </CarouselContent>

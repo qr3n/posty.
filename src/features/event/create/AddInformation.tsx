@@ -12,9 +12,8 @@ import { Button } from "@shared/shadcn/ui/button";
 import { useInput } from "@shared/useInput";
 
 export const AddInformation = () => {
-  const { video, title, description, setTitle, setDescription, canContinue, setCanContinue } = useContext(CreateEventContext)
+  const { video, title, description, thumbnail, setThumbnail, setTitle, setDescription, canContinue, setCanContinue } = useContext(CreateEventContext)
   const [thumbnails, setThumbnails] = useState<string[]>()
-  const [selectedThumbnail, setSelectedThumbnail] = useState<string>()
 
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -31,11 +30,12 @@ export const AddInformation = () => {
     if (video) {
       generateVideoThumbnails(video, 1, 'png').then((thumbnailArray) => {
         setThumbnails(thumbnailArray)
+        setThumbnail(thumbnailArray[0])
       }).catch((err) => {
         console.error(err);
       })
     }
-  }, [video])
+  }, [setThumbnail, video])
 
   useEffect(() => {
     if (title && description && !canContinue) setCanContinue(true)
@@ -57,8 +57,10 @@ export const AddInformation = () => {
                 <PlusIcon/>
                 Upload
               </div>
-              {thumbnails.map(t => <Image key={t} className='w-1/4 rounded-lg object-cover' src={t} alt={''} width={200}
-                                          height={200} style={{aspectRatio: 16 / 9}}/>)}
+              {thumbnails.map(t => <div className='w-1/4 rounded-lg object-cover' key={t} style={{ border: thumbnail === t ? '1px solid #ffe226' : '1px solid black', opacity: thumbnail === t ? 1 : 0.5 }}>
+                <Image className='w-full rounded-lg object-cover' src={t} alt={''} width={200}
+                       height={200} style={{aspectRatio: 16 / 9}} onClick={() => setThumbnail(t)}/>
+              </div>)}
             </> :
             <>
               <Skeleton className='w-1/4 h-16' style={{aspectRatio: 16 / 9}}/>

@@ -11,19 +11,19 @@ export const EventContext = (props: PropsWithChildren) => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [api, setApi] = useState<CarouselApi>()
   const [video, setVideo] = useState<File | null>(null)
-  const [thumbnail, setThumbnail] = useState<File | null>(null)
+  const [thumbnail, setThumbnail] = useState<string | null>(null)
   const [canContinue, setCanContinue] = useState(false)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
   const next = () => {
     api?.scrollNext()
-    setCurrentSlide(p => p + 1)
+    currentSlide !== 2 && setCurrentSlide(p => p + 1)
   }
 
   const previous = () => {
     api?.scrollPrev()
-    setCurrentSlide(p => p - 1)
+    currentSlide !== 0 && setCurrentSlide(p => p - 1)
   }
 
   return (

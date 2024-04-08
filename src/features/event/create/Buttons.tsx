@@ -9,7 +9,7 @@ export const Buttons = () => {
   const { canContinue, next, previous, currentSlide } = useContext(CreateEventContext)
 
   return (
-    <DialogFooter>
+    <DialogFooter className='justify-self-end self-end place-self-end'>
       { currentSlide > 1 && <Button variant='secondary' onClick={previous} className='mt-2 sm:mt-0'>Previous</Button> }
 
       { currentSlide > 0 && (

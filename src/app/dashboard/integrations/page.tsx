@@ -14,7 +14,7 @@ import test from './test.svg'
 import test2 from './test2.png'
 
 export default async function IntegrationsPage() {
-  const integrations = await api.get<IIntegration[]>('http://localhost:8000/integrations')
+  const integrations = await api.get<IIntegration[]>('https://c504-80-67-220-252.ngrok-free.app/integrations')
 
   return (
     <>
