@@ -33,7 +33,7 @@ export default async function DashboardLayout(props: PropsWithChildren) {
 
   if (!session) return redirect('/')
 
-  const integrations = await api.get<IIntegration[]>('https://c504-80-67-220-252.ngrok-free.app/integrations')
+  const integrations = await api.get<IIntegration[]>('https://77d3-80-67-220-252.ngrok-free.app/integrations')
 
   return (
     <div className='flex flex-col-reverse sm:flex-row w-screen h-screen bg-black'>
