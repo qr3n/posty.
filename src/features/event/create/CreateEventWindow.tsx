@@ -35,7 +35,7 @@ export const CreateEventWindow = ({ disabled, integrations }: { disabled: boolea
           </TooltipTrigger>
 
           <TooltipContent>
-            <p>Add to library</p>
+            <p>You don't have any integrations yet.</p>
           </TooltipContent>
         </Tooltip></TooltipProvider> :  <Button className='font-normal flex gap-1 bg-orange-500 hover:bg-orange-600'>Event <PlusIcon/> </Button>}
       </DialogTrigger>
